@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Actividad12</title>
+<style>
+
+body{
+	position: relative;
+	display: block;
+	background: #808080 ;
+
+
+}
+	.imgs {
+			position: absolute;
+			display: inline-table;
+			width: 600px;
+			height: 200px;
+			padding: 1px;
+			right: 28%;
+			top: 50%;
+			text-align: center;
+		/*border: 1px solid black;*/
+
+
+		}
+
+
+#fotoContenedor {
+			position: absolute;
+			display: inline-table;
+			width: 700px;
+			height: 400px;
+			padding: 1px;
+			right: 25%;
+			margin-top: 16%;
+			display: none;
+			border:2px solid #000;
+
+		}
+
+		#cerrar{
+
+			position: absolute;
+			display: inline-table;
+			width: 100px;
+			height: 50px;
+			padding: 1px;
+			right: 44%;
+			margin-top: 45%;
+			/*border: 1px solid red;*/
+
+		}
+
+		#close{
+			font-weight:bold;
+			width: 100px;
+			padding: 8px;
+			margin: 5px;
+			background: lightblue;
+			border-style: none;
+			border-radius: 4px;
+		}
+
+	</style>
+</head>
+<body>
+	
+
+	<div class="imgs">
+	<img src="aguila.jpg" width="120" height="80" style="display: inline; 
+		padding:3px; border: 2px solid black; margin: 2px;" id="f1" onclick="verFoto(1)"/> 
+
+	<img src="tigre.jpg" alt="" width="120" height="80" style="display: inline; padding:3px; border: 2px solid black; margin: 2px;" id="f2" onclick="verFoto(2)"/>
+
+	<img src="lemur.jpg" alt="" width="120" height="80" style="display: inline; padding:3px;border: 2px solid black;margin: 2px;" id="f3" onclick="verFoto(3)"/>
+
+	<img src="elefante.jpg" alt="" width="120" height="80" style="display: inline; padding:3px; border: 2px solid black;margin: 2px;" id="f4" onclick="verFoto(4)"/>
+
+	<img src="camaleon.jpg" alt="" width="120" height="80" style="display: inline; padding:3px; border: 2px solid black;margin: 2px;" id="f5" onclick="verFoto(5)"/>
+
+	<img src="loro.jpg" alt="" width="120" height="80" style="display: inline; padding:3px; border: 2px solid black;margin: 2px;" id="f5" onclick="verFoto(6)"/>
+
+	</div>
+
+	<img src="" id="fotoContenedor"></img>
+
+<div  id="cerrar">
+	<input type="button" name="cerrar" id="close" value="Cerrar" onclick="cerrar()"/>
+</div>
+<script>
+	
+	/* Defino una función que recibe como parametro el id de las imagenes miniaturas*/
+
+	function verFoto(num){
+	/* recibo en una variable el id del contenedor para la imagen grande*/
+	let verfotos=document.getElementById('fotoContenedor');
+		verfotos.style.display="flex"; //Lo hago visible
+
+			if(num==1){
+		/*les fijo el atributo src con el nombre de la foto que deseo ver en grande*/
+		verfotos.setAttribute('src','aguila.jpg');
+
+			}else if(num==2){
+				verfotos.setAttribute('src','tigre.jpg');
+	
+
+			}else if(num==3){
+				verfotos.setAttribute('src','lemur.jpg');
+
+			
+			}else if(num==4){
+			verfotos.setAttribute('src','elefante.jpg');
+
+			}else if(num==5){
+				verfotos.setAttribute('src','camaleon.jpg');
+
+			
+			}else{
+
+				verfotos.setAttribute('src','loro.jpg');
+				
+			}
+		}
+
+		function cerrar(){
+			window.close();
+		}
+
+
+</script>
+
+</body>
+</html>

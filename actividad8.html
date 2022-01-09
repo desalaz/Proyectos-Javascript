@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Actividad 8</title>
+	<style>
+		
+		body{
+			position: relative;
+		}
+		.contenedor{
+			position: absolute;
+			top: 60%;
+			right: 35%;
+			bottom: 50%;
+			margin: 15% auto;
+			background: lightblue;
+			width:500px;
+			height: 400px;
+			text-align: center;
+			line-height: 350px;
+			}
+
+		.formulario{
+			text-align: center;
+		}
+
+
+
+	</style>
+</head>
+<body>
+	<div class="contenedor">
+	<form class="formulario">
+	  <input type="button" name="boton1" id="boton1" value="Boton1" onclick="cambiarSize1()">
+	  <input type="button" name="boton2" id="boton2" value="Boton2" onclick="cambiarSize2()">
+	  <input type="button" name="boton3" id="boton3" value="Boton3" onclick="cambiarSize3()">
+	</form>
+	</div>
+
+	<script type="text/javascript">
+
+		var btn1=document.getElementById('boton1');
+		var btn2=document.getElementById('boton2');
+		var btn3=document.getElementById('boton3');
+
+		function cambiarSize1(){
+
+			btn1.style.width="120px";
+			btn1.style.height="100px";
+			btn1.style.background="yellow";
+			btn1.style.border="5px";
+			btn2.style="default";
+			btn3.style="default";
+		}
+
+		function cambiarSize2(){
+			btn2.style.width="120px";
+			btn2.style.height="100px";
+			btn2.style.background="pink";
+			btn2.style.border="5px";
+			btn1.style="defult";
+			btn3.style="default";
+		}
+			
+		function cambiarSize3(){
+			btn3.style.width="120px";
+			btn3.style.height="100px";
+			btn3.style.background="green";
+			btn3.style.border="5px";
+			btn1.style="default";
+			btn2.style="default";
+		}
+
+	</script>
+
+</body>
+</html>

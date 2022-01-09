@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Actividad 11A</title>
+</head>
+<body>
+	<form action="" method="post">
+	
+		<label for="nombre">Nombre:</label>
+		<input type="text" name="nombre" id="nombre" autofocus/>
+		
+	<a href="actividad11B.html" target="_blank"><input type="button" name="enviar" id="enviar" value="ENVIAR" onclick="guardar()"></a>
+	</form>
+
+
+	<script>
+
+		/*Declaro la funcion para capturar el valor y almacenarlo en localStorage--*/
+
+		function guardar() {
+			
+			 let nomb=document.getElementById("nombre").value;
+			/*recojo el valor del campo nombre para guardarlo*/
+
+			localStorage.setItem('minombre',nomb);
+			/*Lo almaceno en el localStorage */
+
+
+			/* Lo guardo con sessionStorage */
+
+			//location.href="actividad11B.html";
+		}
+
+	</script>
+
+</body>
+</html>

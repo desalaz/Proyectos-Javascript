@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Actividad 9</title>
+	<style>
+		
+		body{
+			position: relative;
+		}
+		.contenedorF{
+			position: absolute;
+			top: 60%;
+			right: 35%;
+			bottom: 50%;
+			margin: 15% auto;
+			background: white;
+			width:500px;
+			height: 400px;
+			text-align: center;
+			line-height: 350px;
+			}
+
+		.formulario{
+			text-align: center;
+		}
+
+		.imgs {
+			position: absolute;
+			width: 300px;
+			height: 300px;
+			right: 42%;
+			top: 50%;
+			/*border: 1px solid black;*/
+
+		}
+
+	</style>
+</head>
+<body>
+
+	<div class="contenedorF">
+	<form class="formulario">
+	  <input type="button" name="boton1" id="boton1" value="Boton1" onclick="verImagen(1)">
+	  <input type="button" name="boton2" id="boton2" value="Boton2" onclick="verImagen(2)">
+	  <input type="button" name="boton3" id="boton3" value="Boton3" onclick="verImagen(3)">
+	</form>
+	</div>
+
+	<div class="imgs">
+		<img src="foto1.jpg" alt="" width="300" height="300" style="display: none;" id="f1"> 
+		<img src="foto2.jpg" alt="" width="300" height="300" style="display: none;" id="f2">
+		<img src="foto3.jpg" alt="" width="300" height="300" style="display: none;" id="f3">
+	</div>
+
+
+	<script type="text/javascript">
+
+		
+		function verImagen(num){
+
+		var ft1=document.getElementById('f1');
+		var ft2=document.getElementById('f2');
+		var ft3=document.getElementById('f3');
+
+
+			if(num==1){
+
+				ft1.style.display="block";
+				ft2.style.display="none";
+				ft3.style.display="none";
+
+			}else if(num==2){
+				ft1.style.display="none";
+				ft2.style.display="block";
+				ft3.style.display="none";
+			}else{
+				ft1.style.display="none";
+				ft2.style.display="none";
+				ft3.style.display="block";
+			}
+		}
+
+
+	</script>
+</body>
+</html>

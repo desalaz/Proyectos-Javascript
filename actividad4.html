@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Actividad4</title>
+</head>
+<body>
+	<script>
+		
+		/*Definición de las variables y los arrays*/
+
+		var patron_dni = /^\d{8}[a-zA-Z]$/; /*con este patron verificamos que el dni cumpla los requisitos*/
+
+		var empleados= new Array();
+		var empleado= new Object();
+		var opc='s';
+		var busqueda=false;
+		var dato,nombre, apel1, apel2;
+		var valido=false;
+		 
+		
+	do{      
+
+
+		do{
+			dato=prompt('Introduce tu DNI:'); //aqui recogemos un primer dato identificativo
+
+			if(patron_dni.test (dato) != true){  //con la funcion test verificamos que el dato sea correcto
+
+			alert("El patrón no coincide con el de un DNI"); //mensaje de fallo
+			//dato=prompt('Introduce tu DNI correctamente:');
+
+			}else{
+
+			document.write("El patrón del DNI es correcto <br>"); //mensaje de patrón correcto
+		     }
+
+			}while(patron_dni.test (dato) == false); // Al cumplirse esta condición se termina el bucle
+
+
+
+				if(empleados.length == 0){ //verificamos si esta vacío el array
+
+				empleado.dni=dato; //igualo el valor de la variable con el atributo del obj
+				
+				var valido=false; //variable de control
+
+
+				do{  //Solicitamos el resto de los datos
+
+				nombre=prompt("introduce tu nombre");
+				
+				//verificamos que el tipo de dato se correcto
+
+				if(!isNaN(nombre) || nombre.length==0){
+					alert('Debes introducir un nombre valido');
+					valido=false;
+
+				 }else{
+					
+					empleado.nombre=nombre; /*igualo las variables con los atributos del objeto (empleado)*/
+					alert('nombre verificado correctamente');
+					valido=true; //actualizo la variable de control
+
+				 }
+
+
+				}while(valido==false);
+
+			do{
+
+				apel1=prompt("Introduce tu primer apellido");
+
+				if(!isNaN(apel1) || apel1.length==0 ){
+					alert('Debes introducir el primer apellido correctamente');
+					valido=false;
+
+				 }else{
+					empleado.apel1=apel1;
+					alert('Apellido1 verificado correctamente');
+					valido=true;  //actualizo la variable de control
+
+				 }
+
+				}while(valido==false);
+
+
+				do{
+
+					apel2=prompt("Introduce tu segundo apellido");
+
+					if(!isNaN(apel2) || apel2.length==0){
+					alert('Debes introducir el segundo apellido correctamente');
+					valido=false;
+
+					}else{
+					empleado.apel2=apel2;
+					alert('Apellido2 verificado correctamente');
+					valido=true;  //actualizo la variable de control
+
+					}
+
+				}while(valido==false);
+
+				/*Al verificar el ingreso correcto de las variables, hago el ingreso del objeto completo al array */
+
+				empleados.push(empleado);
+
+				}else{
+
+
+				for(var i=0; i<empleados.length;i++){ //recorro el array de empleados
+
+					if(empleados[i].dni== dato){ //verifico si el dni ya existe 
+						busqueda= true;  //actualizo la varible si encuentra el dato
+						i=empleados.length;
+						opc='n';
+					alert("El dni ya existe en la base de datos");
+
+					}
+						
+				}
+
+			}
+			opc=prompt("Desea introducir otro empleado? s/n");
+			
+
+		}while(opc=='s');	/*al no cumplirse esta condición  finaliza la entrada de datos de empleados*/
+
+				
+				for(let i=0; i < empleados.length;i++){
+				document.write(empleados[i].dni+"<br> "+empleados[i].nombre+"<br>"+empleados[i].apel1+"<br>"+empleados[i].apel2+"<br>");
+
+				}
+
+	</script>
+</body>
+</html>

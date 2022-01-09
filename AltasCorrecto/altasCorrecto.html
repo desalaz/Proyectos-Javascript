@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Altas Corregido</title>
+<style>
+	body{
+		position: relative;
+	}
+	#capa_menu{
+			margin:0 auto;
+			width: 80em;
+			height: 80em;
+			background-color: lightsalmon;
+			display:block;	
+		}
+
+	#capa_alta{
+			margin:0 auto;
+			width: 80em;
+			height: 80em;
+			background-color: lightblue;
+			display:none;
+			
+		}
+
+		#capa_baja{
+			margin:0 auto;
+			width: 80em;
+			height: 80em;
+			background-color: lightgreen;
+			display:none;		/* Inicialmente oculta*/
+			/*visibility: hidden;*/
+		}
+
+		.contenedor{
+	/*	border: 1px solid black;*/
+		padding: 10px;
+		text-align: center;
+		width: 600px;
+		height: 600px;
+		margin: 0 auto;
+	}	
+
+	#mostrar_info{
+		position: absolute;
+		right: 45%;
+		bottom: 50%;
+		width: 250px;
+		height: 200px;
+		display:none;
+		border: 1px solid black;
+}
+
+	</style>
+</head>
+<body>
+
+	<div id="capa_menu">
+	<div class="contenedor">
+	<h1>Bienvenida/o</h1>
+	
+
+	<img src="logo.png" alt="" width="70px" height="80px" style="margin: 10px;"><br>
+
+	<input type="button" name="entrar" id="entrar" value="ALTAS" onclick="ver_alta()"></a>
+	<input type="button" name="registrar" id="registrar" value="BAJAS" onclick="ver_baja()"><br>
+
+	</div>
+
+
+	</div>
+
+	
+	<div id="capa_alta">
+		<div class="contenedor">
+		<h1>Capa Altas</h1>
+
+		<img src="logo.png" alt="" width="70px" height="80px" style="margin: 10px;"><br>
+		<form action="" method="">
+		<label for="ident">ID de Usuario</label>
+		<input type="text" name="ident" id="ident"><br><br>	
+		<label for="nombre">Nombre de Usuario</label>
+		<input type="text" name="nombre" id="nombre"><br><br>
+		<label for="apellido">Apellido Usuario</label>
+		<input type="text" name="apellido" id="apellido"><br><br>
+		<input type="button" value="ALTAS" onclick="enviar_datos()"/>
+		<input type="button" value="VOLVER" onclick="ver_menu()"/>
+		</form>
+		</div>
+	</div>
+
+	<div id="capa_baja">
+		<div class="contenedor">
+		<h1> Capa Bajas</h1>
+		<img src="logo.png" alt="" width="70px" height="80px" style="margin: 10px;">
+		<form action="" method="">
+		<label for="baja">ID de Usuario</label>
+		<input type="text" name="baja" id="baja" minlength="1" maxlength="4" autofocus><br><br>
+	<!--	<label for="nombre">Nombre de Usuario</label>
+		<input type="text" name="nombre" id="nombre"><br><br> -->
+		<input type="reset" value="BORRAR" autofocus="onfucus" />
+		<input type="button" value="BAJA" onclick="enviar_baja()"/>
+		<input type="button" value="VOLVER" onclick="ver_menu()"/>
+		</form>
+		</div>
+	</div>
+
+<div id="mostrar_info">
+	<div class="contenedor">
+		
+	</div>
+</div>
+	
+
+<script type="text/javascript">
+
+	var personas= new Array();
+
+	function ver_menu(){
+			
+			document.getElementById('capa_alta').style.display='none';
+			document.getElementById('capa_baja').style.display='none';
+			document.getElementById('capa_menu').style.display='block';
+			
+		}
+
+		function ver_alta(){
+			
+			document.getElementById('capa_alta').style.display='block';
+			document.getElementById('capa_baja').style.display='none';
+			document.getElementById('capa_menu').style.display='none';
+			
+		}
+
+
+		function ver_baja(){
+
+			document.getElementById('capa_baja').style.display='block';
+			document.getElementById('capa_alta').style.display='none';
+			document.getElementById('capa_menu').style.display='none';
+		}
+
+
+		function enviar_datos(){
+
+			var ident= document.getElementById('ident').value;
+			var nombre= document.getElementById('nombre').value;
+			var apellido= document.getElementById('apellido').value;
+			var encontrado1=false;
+
+
+
+			for(var i=0; i < personas.length; i++){
+				if(ident === personas[i].ident){
+					encontrado1=true;
+					i=personas.length;
+				};
+			};
+
+
+			if (encontrado1){
+				alert("Id ya registrado. Por favor utiliza un id valido");
+				document.getElementById('capa_menu').style.display='none'; //Ocultamos la capa del menu
+				document.getElementById('capa_alta').style.display='block'; //Mostramos la capa de alta
+				document.getElementById('ident').focus(); //el cursor automaticamente estara colocado en el campo 
+				document.getElementById('ident').value=""; //Dejamos el campo Identificador vacio para comodidad del usuario
+				document.getElementById('nombre').value=""; //Dejamos el campo Nombre vacio para comodidad del usuario
+				document.getElementById('apellido').value=""; //Dejamos el campo Apellidos vacio para comodidad del usuario
+				document.getElementById('ident').focus(); //Ponemos el foco por si se quieren realizar más altas
+			}else{
+
+				let persona=new Object();
+
+				if(ident.length == 0 && nombre.length == 0 && apellido.length == 0){
+					alert("Debes rellenar todos los campos");
+					document.getElementById('capa_menu').style.display='none'; //Ocultamos la capa del menu
+						document.getElementById('capa_alta').style.display='block'; //Mostramos la capa de alta
+						document.getElementById('ident').focus(); //el cursor automaticamente estara colocado en el campo
+
+				}else if(isNaN(ident)){
+					alert("El campo debe ser númerico");
+					document.getElementById('capa_menu').style.display='none'; //Ocultamos la capa del menu
+					document.getElementById('capa_alta').style.display='block'; //Mostramos la capa de alta
+					document.getElementById('ident').focus(); //el cursor automaticamente estara colocado en el campo
+					document.getElementById('ident').value=""; //Dejamos el campo Identificador vacio para comodidad del usuario	
+					
+
+
+				}else if (!isNaN(nombre)){
+					alert("El campo nombre debe ser alfabético");
+				document.getElementById('capa_menu').style.display='none'; //Ocultamos la capa del menu
+				document.getElementById('capa_alta').style.display='block'; //Mostramos la capa de alta
+				document.getElementById('nombre').focus(); //el cursor automaticamente estara colocado en el campo
+				document.getElementById('nombre').value=""; //Dejamos el campo Nombre vacio para comodidad del usuario	
+
+
+				}else if (!isNaN(apellido)){
+					alert("El campo apellido debe ser alfabético");
+					document.getElementById('capa_menu').style.display='none'; //Ocultamos la capa del menu
+					document.getElementById('capa_alta').style.display='block'; //Mostramos la capa de alta
+					document.getElementById('apellido').focus(); //el cursor automaticamente estara colocado en el campo
+					document.getElementById('apellido').value=""; //Dejamos el campo Apellidos vacio para comodidad del usuario
+
+				}else{
+					alert("Datos introducidos correctamente");
+
+					persona.ident= document.getElementById('ident').value;
+					persona.nombre= document.getElementById('nombre').value;
+
+					persona.apellido= document.getElementById('apellido').value;
+
+					personas.push(persona);
+
+					document.getElementById('ident').value=""; //Dejamos el campo Identificador vacio para comodidad del usuario
+					document.getElementById('nombre').value=""; //Dejamos el campo Nombre vacio para comodidad del usuario
+					document.getElementById('apellido').value=""; //Dejamos el campo Apellidos vacio para comodidad del usuario
+					document.getElementById('ident').focus(); //Ponemos el foco por si se quieren realizar más altas
+
+				}
+
+
+			}
+
+			
+
+	}
+
+			console.log(personas);
+
+
+		function enviar_baja(){
+		
+			var buscar=false;
+            var baja = document.getElementById('baja').value;
+
+            document.getElementById('baja').value = "";
+            document.getElementById('baja').focus();
+
+            for (let i = 0; i < personas.length; i++) {
+                if (baja == personas[i].ident){
+                buscar = true;
+                }
+            }
+
+            //SI EXISTE HACE LO SIGUIENTE
+
+            if (buscar == true) {
+              //Encontrar en que indice del array esta el id introducido
+
+                for (let i = 0; i < personas.length; i++) {
+                if (baja == personas[i].ident){
+                	 personas.splice(i, 1);
+                }
+            }
+               
+                console.log(personas);
+        
+                alert("BAJA REALIZADA");
+            }
+
+            //SI NO EXISTE
+
+            else{
+                alert("Persona no encontrada, debes darte de alta ya mismo!!!");
+                document.getElementById('capa_baja').style.display='none';
+                document.getElementById('capa_menu').style.display='block';
+            }
+
+            buscar = false;
+        }
+
+
+</script>
+
+
+</body>
+</html>

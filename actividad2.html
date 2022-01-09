@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Actividad2</title>
+</head>
+
+<body>
+	<script type="text/javascript">
+
+
+	var n1; 	//declaro una variable donde guardo el valor que introduce el usuario por el prompt
+	var contador=0;	 //inicializo un contador para contar las veces que se ingresa numeros.
+	var numPares=[]; //inicializo los arrays, donde iré guardando los datos.
+	var numImpares=[]; 
+	var numeros=[];
+	var aux=0;      //inicializo una variable auxiliar, para usarla al momento de ordenar los arrays.
+
+				/* solicito los datos y evaluo que no este vacio y que sea un numero comprendido en el rango indicado*/
+				do{
+
+				n1=prompt("introduce un numero, intentos: "+(contador+1)); //solicito el dato por pantalla
+
+
+				if (isNaN(n1) || (n1 == " ")|| (n1<1) || (n1>20)) {
+					alert("debes introducir un numero entre 1 y 20");
+						
+						}else{
+							/*agrego los datos a un array general*/
+							numeros.push(parseInt(n1));
+							
+							contador++;  //incremento el contador
+						}
+
+							
+				}while(contador < 6); //al cumplirse esta condición, se acaba el bucle.
+						
+					
+				//Ordeno de menor a mayor el array general (metodo de la burbuja)
+				for(var x=0; x < numeros.length; x++){
+					for(y=0; y < (numeros.length - x); y++){
+						if(numeros[y] > numeros[y + 1]){
+							aux = numeros[y];
+							numeros[y]= numeros[y + 1];
+							numeros[y + 1]= aux;
+						}
+					}
+				}
+
+
+				//Ahora recorro el array general y los divido en dos (Pares e Impares).
+
+					for(var i=0; i< numeros.length; i++){
+
+						if (numeros[i]%2 == 0) {
+						 numPares.push(numeros[i]);
+
+						}else{
+						numImpares.push(numeros[i]);
+					}
+				}
+
+				//verifico si los arrays no están vacios y muestro sus valores
+				
+				if(numPares.length==0){
+					document.write('<b> No se han introducido datos pares</b>');
+				}else{
+					document.write('<h2>Listado de números pares: </h2>');
+					for (var i = 0;  i < numPares.length; i++) {
+						document.write(" <b> "+ numPares[i]+"</b><br>");
+					}
+				}
+
+				if(numImpares.length==0){
+					document.write('<b> No se han introducido datos impares</b>');
+				}else{
+					document.write('<h2>Listado de números impares: </h2>');
+				for (var  e = 0; e < numImpares.length; e++) {
+						document.write(" <b> "+ numImpares[e] + "</b><br>");
+					}
+				}
+
+	</script>
+</body>
+</html>
